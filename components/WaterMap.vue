@@ -238,7 +238,7 @@ export default {
         glbloader.load('/assets.glb', this.loadGLB)
 
         // Controls (mouse movement)
-        if (true){
+        if (false){
         this.controls = new OrbitControls( this.camera, this.renderer.domElement );
         this.controls.maxPolarAngle = Math.PI * 0.495;
         this.controls.target.set( 0, 10, 0 );
