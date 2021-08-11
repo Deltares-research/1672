@@ -65,7 +65,7 @@ export default {
         meshes.forEach((mesh) => {
           mesh.position.y=1
 
-          if (mesh.name=="Dijk"){
+          if (mesh.name=="Dijk2"){
             //this.loadWater(mesh);
 
             //const material = new THREE.MeshStandardMaterial( { roughness: 0 } );
@@ -78,7 +78,8 @@ export default {
             //
           }else{
           mesh.position.x += 5
-          mesh.position.y += -1
+          mesh.position.z += -2
+          mesh.position.y += -1.0 
           this.scene.add(mesh);
           }
         });
@@ -93,6 +94,8 @@ export default {
       
       
       //const waterGeometry = new THREE.PlaneGeometry( 10000, 10000 );
+      
+
       this.water = new Water(
         waterGeometry,
         {
@@ -112,8 +115,8 @@ export default {
       );
       
       this.water.rotation.x = - Math.PI / 2;     
-      this.water.position.x = -0
-      this.water.position.z = 0
+      this.water.position.y = 0.2
+      this.water.position.z = -0
       this.scene.add( this.water)
     },
     init: function() {
@@ -198,7 +201,7 @@ export default {
         skyUniforms[ 'mieDirectionalG' ].value = 0.8;
 
         this.parameters = {
-          elevation: 1,
+          elevation: 2,
           azimuth: 0
         };
 
@@ -217,7 +220,7 @@ export default {
 
         this.mesh.position.z = 630;
         this.mesh.position.x = 120;
-        this.mesh.position.y  = -1;
+        this.mesh.position.y  = 0;
         this.scene.add( this.mesh );
         
 
@@ -232,7 +235,7 @@ export default {
 
         // assets
         const glbloader = new GLTFLoader();
-        glbloader.load('/assets2.glb', this.loadGLB)
+        glbloader.load('/assets.glb', this.loadGLB)
 
         // Controls (mouse movement)
         if (true){
