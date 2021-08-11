@@ -47,6 +47,7 @@ export default {
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    publicPath: "/1672/"
     babel: {
     plugins: [['@babel/plugin-proposal-private-methods', { loose: true }]], // https://github.com/nuxt/nuxt.js/issues/9224
   },
