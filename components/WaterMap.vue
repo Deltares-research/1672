@@ -201,7 +201,7 @@ export default {
         skyUniforms[ 'mieDirectionalG' ].value = 0.8;
 
         this.parameters = {
-          elevation: 2,
+          elevation: 2.5,
           azimuth: 0
         };
 
