@@ -65,10 +65,6 @@ export default {
 
 <style>
 
-h2{
-  color: red;
-}
-
 .row{
   overflow-x: hidden;
 }
@@ -86,7 +82,6 @@ h2{
   margin:  10px;
   box-shadow: 2px 2px 5px;
   transition:  all 0.2s;
-  
 }
 
 .postblurt:hover{

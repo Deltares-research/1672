@@ -18,7 +18,7 @@
  
 export default {
   data: () => ({
-    pitch: "Beleef de Oude Hollandse Waterlinie in de virtuele reconstructie van de Oude Hollandse Waterlinie."
+    pitch: "350 jaar geleden werd Nederland bewust onder water gezet. Bekijk de Oude Hollandse Waterlinie door de ogen van nu."
   })
 }
 </script>
@@ -34,7 +34,7 @@ export default {
 
 .pitch .quote{
     max-width:  1000px;
-    color: #394047;
+    color: #626262;
 }
 
 .logo{

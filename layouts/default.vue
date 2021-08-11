@@ -9,7 +9,7 @@
       <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="ml-auto">
         <b-nav-item to="/">Home</b-nav-item>
-        <b-nav-item to="/blog">Blog</b-nav-item>
+        <b-nav-item to="/blog" @click="test()">Blog</b-nav-item>
         <b-nav-item to="/newsletter">Nieuwsbrief</b-nav-item>
         <b-nav-item to="/contact">Contact</b-nav-item>
       </b-navbar-nav>
@@ -23,6 +23,16 @@
 </div>
 </template>
 
+<script>
+  export default{
+    methods: {
+      test: function() {
+        this.$store.commit('camera',(0, 20, -50))
+      }
+    }
+  }
+
+</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Georama');
@@ -41,7 +51,6 @@ html {overflow:  hidden}
   font-family: 'Georama', sans-serif;
   font-weight: 300;
   margin-top:  10px;
-
 }
 
 .nav-collapse{
@@ -53,7 +62,6 @@ html {overflow:  hidden}
   font-family: 'Georama', sans-serif;
   font-weight: 300;
   font-size:  24px;
-  color:  black;
   border: none;
 }
 
@@ -84,4 +92,17 @@ a.nuxt-link-active {
   transform: translate(0px, 20px);
 
 }
+
+.blogpost{
+  font-family: 'Georama', sans-serif;
+  font-size: 14px;
+  background:  rgba(255, 255, 255, 0.9);
+  backdrop-filter:  blur(4px);
+  border-radius:  10px;
+  padding: 10px;
+  width: 550px;
+  max-width:  800px;
+  max-height:  70vh;
+}
+
 </style>

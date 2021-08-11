@@ -102,16 +102,10 @@ export default {
 }
 
 .blogpost{
-  font-family: 'Georama', sans-serif;
-  font-size: 14px;
-  background:  rgba(255, 255, 255, 0.2);
-  backdrop-filter:  blur(4px) saturate(180%);
-  border-radius:  10px;
   padding:  50px;
   width: 70vw;
   max-width:  800px;
   height:  70vh;
-  
 }
 
 .content{

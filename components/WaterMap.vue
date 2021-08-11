@@ -5,6 +5,8 @@
 <script>
 import * as THREE from '../node_modules/three/build/three.module.js';
 
+import { SVGLoader } from '../node_modules/three/examples/jsm/loaders/SVGLoader.js';
+import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 import Stats from '../node_modules/three/examples/jsm/libs/stats.module.js';
 
 import { GUI } from '../node_modules/three/examples/jsm/libs/dat.gui.module.js';
@@ -31,6 +33,11 @@ export default {
       pmremGenerator: null,
     }
   },
+  computed: {
+    cameraPosition: function(){
+      return [this.$store.state.camerax, this.$store.state.cameray, this.$store.state.cameraz] 
+    }
+  },
   methods: {
     updateSun: function(){
       const phi = THREE.MathUtils.degToRad( 90 - this.parameters.elevation );
@@ -39,8 +46,9 @@ export default {
           this.sun.setFromSphericalCoords( 1, phi, theta );
 
           this.sky.material.uniforms[ 'sunPosition' ].value.copy( this.sun );
-          this.water.material.uniforms[ 'sunDirection' ].value.copy( this.sun ).normalize();
-
+          if (this.water){
+            this.water.material.uniforms[ 'sunDirection' ].value.copy( this.sun ).normalize();
+          }
           this.scene.environment = this.pmremGenerator.fromScene(this.sky ).texture;
 
     },
@@ -48,6 +56,65 @@ export default {
       this.camera.aspect = window.innerWidth / window.innerHeight;
       this.camera.updateProjectionMatrix();
       this.renderer.setSize( window.innerWidth, window.innerHeight );
+    },
+    loadGLB: function(gltf){
+      var meshes = []
+        gltf.scene.traverse((object) => {
+          if (object.isMesh) meshes.push(object);
+        });
+        meshes.forEach((mesh) => {
+          mesh.position.y=1
+
+          if (mesh.name=="Dijk"){
+            //this.loadWater(mesh);
+
+            //const material = new THREE.MeshStandardMaterial( { roughness: 0 } );
+            //let mesh2 = new THREE.Mesh( mesh.geometry, material );
+            //mesh2.position.x = 0
+            //mesh2.position.z = 0
+            //mesh2.position.y = 1
+            //this.scene.add( mesh2 );
+          } else if (mesh.name=="Water") {
+            //
+          }else{
+          mesh.position.x += 5
+          mesh.position.y += -1
+          this.scene.add(mesh);
+          }
+        });
+
+ 
+    },
+    loadWater: function(data){
+      
+      const path = data.paths[0]
+      const shape = SVGLoader.createShapes ( path )
+      const waterGeometry = new THREE.ShapeGeometry( shape );
+      
+      
+      //const waterGeometry = new THREE.PlaneGeometry( 10000, 10000 );
+      this.water = new Water(
+        waterGeometry,
+        {
+          textureWidth: 512,
+          textureHeight: 512,
+          waterNormals: new THREE.TextureLoader().load( '/waternormals.jpg', function ( texture ) {
+
+            texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+
+          } ),
+          sunDirection: new THREE.Vector3(),
+          sunColor: 0xffffff,
+          waterColor: 0x001e0f,
+          distortionScale: 3.7,
+          fog: this.scene.fog !== undefined
+        }
+      );
+      
+      this.water.rotation.x = - Math.PI / 2;     
+      this.water.position.x = -0
+      this.water.position.z = 0
+      this.scene.add( this.water)
     },
     init: function() {
         this.container = document.getElementById('container' );
@@ -61,31 +128,37 @@ export default {
         this.container.appendChild( this.renderer.domElement );
 
         //
-
+        
         this.scene = new THREE.Scene();
 
-        this.camera = new THREE.PerspectiveCamera( 55, window.innerWidth / window.innerHeight, 1, 20000 );
-        this.camera.position.set( 30, 30, 2000 );
-        const a = new THREE.Vector3( 0, 0, 0 );
+        this.camera = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 1, 20000 );
+        //this.camera.position.set(this.cameraPosition[0], this.cameraPosition[1], this.cameraPosition[2] );  //447.49262,1336.4336
+        
+        let position = 2
+
+        if (position==1){
+          this.camera.position.set(80, 150, -100 );  //447.49262,1336.4336
+          const a = new THREE.Vector3(80, 6, 50 );
+        } else if (position == 2) {
+          this.camera.position.set(0, 50, -20 );  //447.49262,1336.4336
+          const a = new THREE.Vector3(0, 50, 50 );
+        }
+
+        this.camera.position.set(0, 15, -80 );  //447.49262,1336.4336
+        const a = new THREE.Vector3(0, 0, 60 );
         this.camera.lookAt(a)
+
+        //const axesHelper = new THREE.AxesHelper( 500 );
+        //this.scene.add( axesHelper );
+
         //
 
         this.sun = new THREE.Vector3();
 
         // Water
-
-        //const heartShape = new THREE.Shape();
-        //const x = 0, y = 0;
-        //heartShape.moveTo( x + 5, y + 5 );
-        //heartShape.bezierCurveTo( x + 5, y + 5, x + 4, y, x, y );
-        //heartShape.bezierCurveTo( x - 6, y, x - 6, y + 7,x - 6, y + 7 );
-        //heartShape.bezierCurveTo( x - 6, y + 11, x - 3, y + 15.4, x + 5, y + 19 );
-        //heartShape.bezierCurveTo( x + 12, y + 15.4, x + 16, y + 11, x + 16, y + 7 );
-        //heartShape.bezierCurveTo( x + 16, y + 7, x + 16, y, x + 10, y );
-        //heartShape.bezierCurveTo( x + 7, y, x + 5, y + 5, x + 5, y + 5 );
-
-        //const waterGeometry = new THREE.ShapeGeometry( heartShape );
-
+        const l = new SVGLoader().load('kom_gorcum.svg', this.loadWater);
+        
+        if (false){
         const waterGeometry = new THREE.PlaneGeometry( 10000, 10000 );
 
         this.water = new Water(
@@ -109,6 +182,7 @@ export default {
         this.water.rotation.x = - Math.PI / 2;
 
         this.scene.add( this.water );
+        }
 
         // Skybox
 
@@ -124,38 +198,44 @@ export default {
         skyUniforms[ 'mieDirectionalG' ].value = 0.8;
 
         this.parameters = {
-          elevation: 2,
-          azimuth: 180
+          elevation: 1,
+          azimuth: 0
         };
 
         this.pmremGenerator = new THREE.PMREMGenerator( this.renderer );
 
         // add texture map
-        //const geometry = new THREE.PlaneGeometry(1000, 1000);
-        //const loader = new THREE.TextureLoader();
-        //const texture = loader.load( '/waternormals.jpg')
-        //const material = new THREE.MeshBasicMaterial( { map: texture } );
-        //this.mesh = new THREE.Mesh( geometry, material );
-        //this.mesh.rotation.x = - Math.PI / 2;
-        //this.mesh.position.z = 1000;
-        //this.mesh.position.y  = 12;
-//
-        // 
-        //
-        //this.scene.add( this.mesh );
+        const geometry = new THREE.PlaneGeometry(1061, 1404);
+        const loader = new THREE.TextureLoader();
+        const texture = loader.load( '/kom_map.png')
+        const material = new THREE.MeshBasicMaterial( { map: texture } );
+        this.mesh = new THREE.Mesh( geometry, material );
+        
+        this.mesh.rotation.x = - Math.PI / 2;
+        this.mesh.rotation.z = - Math.PI ;
+
+
+        this.mesh.position.z = 630;
+        this.mesh.position.x = 120;
+        this.mesh.position.y  = -1;
+        this.scene.add( this.mesh );
         
 
         // spinning box
         if (false){
-        const geometry = new THREE.BoxGeometry( 30, 30, 30 );
+        const geometry = new THREE.BoxGeometry( 5, 5, 5 );
         const material = new THREE.MeshStandardMaterial( { roughness: 0 } );
 
         this.mesh = new THREE.Mesh( geometry, material );
         this.scene.add( this.mesh );
         }
 
+        // assets
+        const glbloader = new GLTFLoader();
+        glbloader.load('/assets2.glb', this.loadGLB)
+
         // Controls (mouse movement)
-        if (false){
+        if (true){
         this.controls = new OrbitControls( this.camera, this.renderer.domElement );
         this.controls.maxPolarAngle = Math.PI * 0.495;
         this.controls.target.set( 0, 10, 0 );
@@ -203,9 +283,9 @@ export default {
       //this.mesh.position.y = Math.sin( time ) * 20 + 5;
       //this.mesh.rotation.x = time * 0.5;
       //this.mesh.rotation.z = time * 0.51;
-
-      this.water.material.uniforms[ 'time' ].value += 1.0 / 120.0;
-
+      if (this.water){
+        this.water.material.uniforms[ 'time' ].value += 1.0 / 120.0;
+      }
       this.renderer.render( this.scene, this.camera );
 
     }
