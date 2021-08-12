@@ -101,7 +101,7 @@ export default {
         {
           textureWidth: 512,
           textureHeight: 512,
-          waterNormals: new THREE.TextureLoader().load( '/waternormals.jpg', function ( texture ) {
+          waterNormals: new THREE.TextureLoader().load( 'waternormals.jpg', function ( texture ) {
 
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
@@ -210,7 +210,7 @@ export default {
         // add texture map
         const geometry = new THREE.PlaneGeometry(1061, 1404);
         const loader = new THREE.TextureLoader();
-        const texture = loader.load( '/kom_map.png')
+        const texture = loader.load( 'kom_map.png')
         const material = new THREE.MeshBasicMaterial( { map: texture } );
         this.mesh = new THREE.Mesh( geometry, material );
         
@@ -235,7 +235,7 @@ export default {
 
         // assets
         const glbloader = new GLTFLoader();
-        glbloader.load('/assets.glb', this.loadGLB)
+        glbloader.load('assets.glb', this.loadGLB)
 
         // Controls (mouse movement)
         if (false){
