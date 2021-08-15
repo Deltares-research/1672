@@ -276,7 +276,7 @@ export default {
         glbloader.load('assets.glb', this.loadGLB)
 
         // Controls (mouse movement)
-        this.addControls()
+        //this.addControls()
 
         // Stats (show fps)
         this.stats = new Stats();
