@@ -1,7 +1,7 @@
 <template> 
   <simplebar class="container-fluid content">
-  <b-row class="justify-content-md-center" >
-    <b-col md="auto" class='postblurt' v-for="post in posts">
+  <b-row class="justify-content-md-center justify-content-sm-center">
+    <b-col md="auto" sm="auto" class='postblurt' v-for="post in posts">
 
       <NuxtLink :to="'/posts/'+post.id">{{post.title}}</NuxtLink>
       <br>
@@ -70,7 +70,6 @@ export default {
 }
 
 
-
 .postblurt{
   font-family: 'Georama', sans-serif;
   font-size: 14px;
@@ -78,7 +77,7 @@ export default {
   backdrop-filter:  blur(4px);
   border-radius:  10px;
   padding:  30px;
-  max-width:  300px;
+  max-width:  500px;
   margin:  10px;
   box-shadow: 2px 2px 5px;
   transition:  all 0.2s;

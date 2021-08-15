@@ -1,7 +1,7 @@
 <template>
 <div class="container-fluid content">
   <b-row class="justify-content-md-center">
-    <b-col md="auto">
+    <b-col md="auto" sm="auto">
       
     <!--<div class="blogpost overflow-auto">-->
       <simplebar class="blogpost" data-simplebar-auto-hide="true">
@@ -103,7 +103,7 @@ export default {
 
 .blogpost{
   padding:  50px;
-  width: 70vw;
+  width: calc(100vw - 30px);
   max-width:  800px;
   height:  70vh;
 }

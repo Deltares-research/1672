@@ -151,6 +151,21 @@ export default {
       this.mesh.position.y  = 0;
       this.scene.add( this.mesh );
     },
+    addGUI: function() {
+      const gui = new GUI();
+
+      const folderSky = gui.addFolder( 'Sky' );
+      folderSky.add( this.parameters, 'elevation', 0, 90, 0.1 ).onChange( this.updateSun );
+      folderSky.add( this.parameters, 'azimuth', - 180, 180, 0.1 ).onChange( this.updateSun );
+      folderSky.open();
+
+      const waterUniforms = this.water.material.uniforms;
+
+      const folderWater = gui.addFolder( 'Water' );
+      folderWater.add( waterUniforms.distortionScale, 'value', 0, 8, 0.1 ).name( 'distortionScale' );
+      folderWater.add( waterUniforms.size, 'value', 0.1, 20, 0.1 ).name( 'size' );
+      folderWater.open();
+    },
     addControls: function(){
       this.controls = new OrbitControls( this.camera, this.renderer.domElement );
       this.controls.maxPolarAngle = Math.PI * 0.495;
@@ -247,7 +262,7 @@ export default {
         skyUniforms[ 'mieDirectionalG' ].value = 0.8;
 
         this.parameters = {
-          elevation: 20,
+          elevation: 15,
           azimuth: 120
         };
 
@@ -261,30 +276,17 @@ export default {
         glbloader.load('assets.glb', this.loadGLB)
 
         // Controls (mouse movement)
-        //this.addControls()
+        this.addControls()
 
         // Stats (show fps)
         this.stats = new Stats();
-        if (true){
-        this.container.appendChild( this.stats.dom );
-        }
-        // GUI
         if (false){
-        const gui = new GUI();
-
-        const folderSky = gui.addFolder( 'Sky' );
-        folderSky.add( this.parameters, 'elevation', 0, 90, 0.1 ).onChange( this.updateSun );
-        folderSky.add( this.parameters, 'azimuth', - 180, 180, 0.1 ).onChange( this.updateSun );
-        folderSky.open();
-
-        const waterUniforms = this.water.material.uniforms;
-
-        const folderWater = gui.addFolder( 'Water' );
-        folderWater.add( waterUniforms.distortionScale, 'value', 0, 8, 0.1 ).name( 'distortionScale' );
-        folderWater.add( waterUniforms.size, 'value', 0.1, 20, 0.1 ).name( 'size' );
-        folderWater.open();
+          this.container.appendChild( this.stats.dom );
         }
-        //
+
+        // GUI
+        //this.addGUI()
+
         this.updateSun()
 
         window.addEventListener( 'resize', this.onWindowResize );
