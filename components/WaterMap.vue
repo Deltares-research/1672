@@ -65,8 +65,8 @@ export default {
         meshes.forEach((mesh) => {
           mesh.position.y=1
 
-          if (mesh.name=="Dijk2"){
-            //this.loadWater(mesh);
+          if (mesh.name=="Water"){
+            this.loadWater(mesh);
 
             //const material = new THREE.MeshStandardMaterial( { roughness: 0 } );
             //let mesh2 = new THREE.Mesh( mesh.geometry, material );
@@ -74,12 +74,12 @@ export default {
             //mesh2.position.z = 0
             //mesh2.position.y = 1
             //this.scene.add( mesh2 );
-          } else if (mesh.name=="Water") {
+          } else if (mesh.name=="Wateawr2") {
             //
           }else{
-          mesh.position.x += 5
-          mesh.position.z += -2
-          mesh.position.y += -1.0 
+          //mesh.position.x += 5
+          //mesh.position.z += -2
+          //mesh.position.y += -1.0 
           this.scene.add(mesh);
           }
         });
@@ -88,10 +88,10 @@ export default {
     },
     loadWater: function(data){
       
-      const path = data.paths[0]
-      const shape = SVGLoader.createShapes ( path )
-      const waterGeometry = new THREE.ShapeGeometry( shape );
-      
+      //const path = data.paths[0]
+      //const shape = SVGLoader.createShapes ( path )
+      //const waterGeometry = new THREE.ShapeGeometry( shape );
+      const waterGeometry = data.geometry;
       
       //const waterGeometry = new THREE.PlaneGeometry( 10000, 10000 );
       
@@ -108,23 +108,34 @@ export default {
           } ),
           sunDirection: new THREE.Vector3(),
           sunColor: 0xffffff,
-          waterColor: 0x001e0f,
-          distortionScale: 3.7,
+          waterColor: 0x001e0f, // 0x131378,  // 0x001e0f 
+          distortionScale: 1.7,
           fog: this.scene.fog !== undefined
         }
       );
       
-      this.water.rotation.x = - Math.PI / 2;     
-      this.water.position.y = 0.2
-      this.water.position.z = -0
+      //this.water.rotation.x = Math.PI / 2;     
+      this.water.position.y = 0.4
+      //this.water.position.z = -0
       this.scene.add( this.water)
+    },
+    reportPositionCamera: function(){
+      
+      // location
+      console.log(this.camera.position)
+      
+      // direction
+      var dirvector = new THREE.Vector3();
+      this.camera.getWorldDirection(dirvector)
+      console.log(dirvector)
+        
     },
     init: function() {
         this.container = document.getElementById('container' );
 
         //
 
-        this.renderer = new THREE.WebGLRenderer();
+        this.renderer = new THREE.WebGLRenderer( { antialias: true});
         this.renderer.setPixelRatio( window.devicePixelRatio );
         this.renderer.setSize( window.innerWidth, window.innerHeight );
         this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -137,7 +148,8 @@ export default {
         this.camera = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 1, 20000 );
         //this.camera.position.set(this.cameraPosition[0], this.cameraPosition[1], this.cameraPosition[2] );  //447.49262,1336.4336
         
-        let position = 2
+        let position = 3
+        
 
         if (position==1){
           this.camera.position.set(80, 150, -100 );  //447.49262,1336.4336
@@ -145,11 +157,15 @@ export default {
         } else if (position == 2) {
           this.camera.position.set(0, 50, -20 );  //447.49262,1336.4336
           const a = new THREE.Vector3(0, 50, 50 );
+        } else if (position==3){
+          this.camera.position.set(4.5, 128, -210 );  //447.49262,1336.4336
+          var a = new THREE.Vector3(-0.011, -0.3568, 120 );
+          this.camera.lookAt(a)
         }
 
-        this.camera.position.set(0, 15, -80 );  //447.49262,1336.4336
-        const a = new THREE.Vector3(0, 0, 60 );
-        this.camera.lookAt(a)
+        //this.camera.position.set(0, 15, -80 );  //447.49262,1336.4336
+        //const a = new THREE.Vector3(0, 0, 60 );
+        ///this.camera.lookAt(a)
 
         //const axesHelper = new THREE.AxesHelper( 500 );
         //this.scene.add( axesHelper );
@@ -159,7 +175,7 @@ export default {
         this.sun = new THREE.Vector3();
 
         // Water
-        const l = new SVGLoader().load('kom_gorcum.svg', this.loadWater);
+        //const l = new SVGLoader().load('kom_gorcum.svg', this.loadWater);
         
         if (false){
         const waterGeometry = new THREE.PlaneGeometry( 10000, 10000 );
@@ -201,13 +217,14 @@ export default {
         skyUniforms[ 'mieDirectionalG' ].value = 0.8;
 
         this.parameters = {
-          elevation: 2.5,
-          azimuth: 0
+          elevation: 20,
+          azimuth: 120
         };
 
         this.pmremGenerator = new THREE.PMREMGenerator( this.renderer );
 
         // add texture map
+        if (true) {
         const geometry = new THREE.PlaneGeometry(1061, 1404);
         const loader = new THREE.TextureLoader();
         const texture = loader.load( 'kom_map.png')
@@ -218,11 +235,11 @@ export default {
         this.mesh.rotation.z = - Math.PI ;
 
 
-        this.mesh.position.z = 630;
-        this.mesh.position.x = 120;
+        this.mesh.position.z = 632;
+        this.mesh.position.x = 115;
         this.mesh.position.y  = 0;
         this.scene.add( this.mesh );
-        
+        }
 
         // spinning box
         if (false){
@@ -241,10 +258,11 @@ export default {
         if (false){
         this.controls = new OrbitControls( this.camera, this.renderer.domElement );
         this.controls.maxPolarAngle = Math.PI * 0.495;
-        this.controls.target.set( 0, 10, 0 );
+        this.controls.target.set( -0.02246, -0.268235, 60  );
         this.controls.minDistance = 40.0;
-        this.controls.maxDistance = 200.0;
+        this.controls.maxDistance = 300.0;
         this.controls.update();
+        this.controls.addEventListener( 'change', this.reportPositionCamera);
         }
 
         // Stats (show fps)
@@ -290,7 +308,7 @@ export default {
         this.water.material.uniforms[ 'time' ].value += 1.0 / 120.0;
       }
       this.renderer.render( this.scene, this.camera );
-
+      //console.log(this.camera.position)
     }
   },
   mounted() {

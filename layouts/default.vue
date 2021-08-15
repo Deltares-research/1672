@@ -9,8 +9,8 @@
       <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="ml-auto">
         <b-nav-item to="/">Home</b-nav-item>
-        <b-nav-item to="/blog" @click="test()">Blog</b-nav-item>
-        <b-nav-item to="/newsletter">Nieuwsbrief</b-nav-item>
+        <b-nav-item to="/project">Project</b-nav-item>
+        <b-nav-item to="/blog">Blog</b-nav-item>
         <b-nav-item to="/contact">Contact</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
@@ -23,16 +23,6 @@
 </div>
 </template>
 
-<script>
-  export default{
-    methods: {
-      test: function() {
-        this.$store.commit('camera',(0, 20, -50))
-      }
-    }
-  }
-
-</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Georama');

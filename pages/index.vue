@@ -6,7 +6,7 @@
         <b-img center fluid class="logo" src="../static/Logo Deltatechnologie Oude Hollandse Waterlinie_zw.png"/>
     </b-row>
     <b-row class="text-center pitch" align-v="center">
-      <b-col><div class="mx-auto quote">{{ pitch }}</div></b-col>
+      <b-col><div class="mx-auto quote"><span v-html="pitch">{{ pitch }}</span></div></b-col>
     </b-row>
   </div>
 </div>
@@ -18,7 +18,7 @@
  
 export default {
   data: () => ({
-    pitch: "350 jaar geleden werd Nederland bewust onder water gezet. Bekijk de Oude Hollandse Waterlinie door de ogen van nu."
+    pitch: ""
   })
 }
 </script>
@@ -27,18 +27,18 @@ export default {
 
 .pitch{
   font-family: 'Georama', sans-serif;
-  font-size: 20px;
-  font-weight: 100;
-  margin:  40px;
+  font-size: 24px;
+  font-weight: 300;
+  margin:  20px;
 }
 
 .pitch .quote{
     max-width:  1000px;
-    color: #626262;
+    color: #0959D2;
 }
 
 .logo{
-  height: 250px;
+  height: 200px;
 }
 
 
