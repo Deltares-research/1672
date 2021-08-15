@@ -66,6 +66,8 @@ export default {
           mesh.position.y=1
 
           if (mesh.name=="Water"){
+            
+
             this.loadWater(mesh);
 
             //const material = new THREE.MeshStandardMaterial( { roughness: 0 } );
@@ -74,7 +76,7 @@ export default {
             //mesh2.position.z = 0
             //mesh2.position.y = 1
             //this.scene.add( mesh2 );
-          } else if (mesh.name=="Wateawr2") {
+          } else if (mesh.name=="Map") {
             //
           }else{
           //mesh.position.x += 5
@@ -109,14 +111,14 @@ export default {
           sunDirection: new THREE.Vector3(),
           sunColor: 0xffffff,
           waterColor: 0x001e0f, // 0x131378,  // 0x001e0f 
-          distortionScale: 1.7,
+          distortionScale: 2,
           fog: this.scene.fog !== undefined
         }
       );
       
-      //this.water.rotation.x = Math.PI / 2;     
+      //this.water.rotation.x = -Math.PI / 2;     
       this.water.position.y = 0.4
-      //this.water.position.z = -0
+      //this.water.position.z = 1
       this.scene.add( this.water)
     },
     reportPositionCamera: function(){
@@ -129,6 +131,34 @@ export default {
       this.camera.getWorldDirection(dirvector)
       console.log(dirvector)
         
+    },
+    loadMap: function() {
+      const geometry = new THREE.PlaneGeometry(1061, 1404);
+      const loader = new THREE.TextureLoader();
+      const texture = loader.load( 'kom_map.png')
+      const material = new THREE.MeshBasicMaterial( { map: texture } );
+      //const material = new THREE.MeshBasicMaterial();
+      
+      this.mesh = new THREE.Mesh( geometry, material );
+      
+      this.mesh.rotation.x =  - Math.PI / 2;
+      this.mesh.rotation.z =  0//Math.PI ;
+
+
+
+      this.mesh.position.z = -320;
+      this.mesh.position.x = -54;
+      this.mesh.position.y  = 0;
+      this.scene.add( this.mesh );
+    },
+    addControls: function(){
+      this.controls = new OrbitControls( this.camera, this.renderer.domElement );
+      this.controls.maxPolarAngle = Math.PI * 0.495;
+      this.controls.target.set( -0.02246, -0.268235, 60  );
+      this.controls.minDistance = 40.0;
+      this.controls.maxDistance = 300.0;
+      this.controls.update();
+      this.controls.addEventListener( 'change', this.reportPositionCamera);
     },
     init: function() {
         this.container = document.getElementById('container' );
@@ -158,8 +188,8 @@ export default {
           this.camera.position.set(0, 50, -20 );  //447.49262,1336.4336
           const a = new THREE.Vector3(0, 50, 50 );
         } else if (position==3){
-          this.camera.position.set(4.5, 128, -210 );  //447.49262,1336.4336
-          var a = new THREE.Vector3(-0.011, -0.3568, 120 );
+          this.camera.position.set(70, 106, 500 );  //447.49262,1336.4336
+          var a = new THREE.Vector3(70, 0, 200 );
           this.camera.lookAt(a)
         }
 
@@ -193,7 +223,7 @@ export default {
             sunDirection: new THREE.Vector3(),
             sunColor: 0xffffff,
             waterColor: 0x001e0f,
-            distortionScale: 3.7,
+            distortionScale: 4,
             fog: this.scene.fog !== undefined
           }
         );
@@ -224,50 +254,18 @@ export default {
         this.pmremGenerator = new THREE.PMREMGenerator( this.renderer );
 
         // add texture map
-        if (true) {
-        const geometry = new THREE.PlaneGeometry(1061, 1404);
-        const loader = new THREE.TextureLoader();
-        const texture = loader.load( 'kom_map.png')
-        const material = new THREE.MeshBasicMaterial( { map: texture } );
-        this.mesh = new THREE.Mesh( geometry, material );
-        
-        this.mesh.rotation.x = - Math.PI / 2;
-        this.mesh.rotation.z = - Math.PI ;
-
-
-        this.mesh.position.z = 632;
-        this.mesh.position.x = 115;
-        this.mesh.position.y  = 0;
-        this.scene.add( this.mesh );
-        }
-
-        // spinning box
-        if (false){
-        const geometry = new THREE.BoxGeometry( 5, 5, 5 );
-        const material = new THREE.MeshStandardMaterial( { roughness: 0 } );
-
-        this.mesh = new THREE.Mesh( geometry, material );
-        this.scene.add( this.mesh );
-        }
+        this.loadMap()
 
         // assets
         const glbloader = new GLTFLoader();
         glbloader.load('assets.glb', this.loadGLB)
 
         // Controls (mouse movement)
-        if (false){
-        this.controls = new OrbitControls( this.camera, this.renderer.domElement );
-        this.controls.maxPolarAngle = Math.PI * 0.495;
-        this.controls.target.set( -0.02246, -0.268235, 60  );
-        this.controls.minDistance = 40.0;
-        this.controls.maxDistance = 300.0;
-        this.controls.update();
-        this.controls.addEventListener( 'change', this.reportPositionCamera);
-        }
+        //this.addControls()
 
         // Stats (show fps)
         this.stats = new Stats();
-        if (false){
+        if (true){
         this.container.appendChild( this.stats.dom );
         }
         // GUI
