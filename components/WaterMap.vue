@@ -166,6 +166,12 @@ export default {
       folderWater.add( waterUniforms.size, 'value', 0.1, 20, 0.1 ).name( 'size' );
       folderWater.open();
     },
+    addStats: function(){
+      this.stats = new Stats();
+        if (false){
+          this.container.appendChild( this.stats.dom );
+        }
+    },
     addControls: function(){
       this.controls = new OrbitControls( this.camera, this.renderer.domElement );
       this.controls.maxPolarAngle = Math.PI * 0.495;
@@ -190,15 +196,19 @@ export default {
         
         this.scene = new THREE.Scene();
 
+        // add texture map
+        this.loadMap()
+
+        // Add camera
         this.camera = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 1, 20000 );
-        //this.camera.position.set(this.cameraPosition[0], this.cameraPosition[1], this.cameraPosition[2] );  //447.49262,1336.4336
         
-        let position = 3
+        let position = 1
         
 
         if (position==1){
-          this.camera.position.set(80, 150, -100 );  //447.49262,1336.4336
-          const a = new THREE.Vector3(80, 6, 50 );
+          this.camera.position.set(70, 300, 472);  //447.49262,1336.4336
+          const a = new THREE.Vector3(70, 0, 200 );
+          this.camera.lookAt(a)
         } else if (position == 2) {
           this.camera.position.set(0, 50, -20 );  //447.49262,1336.4336
           const a = new THREE.Vector3(0, 50, 50 );
@@ -219,35 +229,7 @@ export default {
 
         this.sun = new THREE.Vector3();
 
-        // Water
-        //const l = new SVGLoader().load('kom_gorcum.svg', this.loadWater);
         
-        if (false){
-        const waterGeometry = new THREE.PlaneGeometry( 10000, 10000 );
-
-        this.water = new Water(
-          waterGeometry,
-          {
-            textureWidth: 512,
-            textureHeight: 512,
-            waterNormals: new THREE.TextureLoader().load( '/waternormals.jpg', function ( texture ) {
-
-              texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-
-            } ),
-            sunDirection: new THREE.Vector3(),
-            sunColor: 0xffffff,
-            waterColor: 0x001e0f,
-            distortionScale: 4,
-            fog: this.scene.fog !== undefined
-          }
-        );
-
-        this.water.rotation.x = - Math.PI / 2;
-
-        this.scene.add( this.water );
-        }
-
         // Skybox
 
         this.sky = new Sky();
@@ -268,8 +250,7 @@ export default {
 
         this.pmremGenerator = new THREE.PMREMGenerator( this.renderer );
 
-        // add texture map
-        this.loadMap()
+        
 
         // assets
         const glbloader = new GLTFLoader();
@@ -279,10 +260,7 @@ export default {
         //this.addControls()
 
         // Stats (show fps)
-        this.stats = new Stats();
-        if (false){
-          this.container.appendChild( this.stats.dom );
-        }
+        //this.addStats()
 
         // GUI
         //this.addGUI()
@@ -295,7 +273,9 @@ export default {
     animate: function() {
         requestAnimationFrame( this.animate );
         this.render();
-        this.stats.update();
+        if (this.stats){
+          this.stats.update();
+        }
 
     },
     render: function(){
