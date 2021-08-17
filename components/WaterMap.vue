@@ -151,6 +151,25 @@ export default {
       this.mesh.position.y  = 0;
       this.scene.add( this.mesh );
     },
+    addSky: function(){
+      this.sky = new Sky();
+      this.sky.scale.setScalar( 10000 );
+      this.scene.add( this.sky );
+
+      const skyUniforms = this.sky.material.uniforms;
+
+      skyUniforms[ 'turbidity' ].value = 10;
+      skyUniforms[ 'rayleigh' ].value = 2;
+      skyUniforms[ 'mieCoefficient' ].value = 0.005;
+      skyUniforms[ 'mieDirectionalG' ].value = 0.8;
+
+      this.parameters = {
+        elevation: 15,
+        azimuth: 120
+      };
+
+      this.pmremGenerator = new THREE.PMREMGenerator( this.renderer );
+      },
     addGUI: function() {
       const gui = new GUI();
 
@@ -218,37 +237,16 @@ export default {
           this.camera.lookAt(a)
         }
 
-        //this.camera.position.set(0, 15, -80 );  //447.49262,1336.4336
-        //const a = new THREE.Vector3(0, 0, 60 );
-        ///this.camera.lookAt(a)
-
         //const axesHelper = new THREE.AxesHelper( 500 );
         //this.scene.add( axesHelper );
 
-        //
-
+        // Sun
         this.sun = new THREE.Vector3();
 
         
         // Skybox
-
-        this.sky = new Sky();
-        this.sky.scale.setScalar( 10000 );
-        this.scene.add( this.sky );
-
-        const skyUniforms = this.sky.material.uniforms;
-
-        skyUniforms[ 'turbidity' ].value = 10;
-        skyUniforms[ 'rayleigh' ].value = 2;
-        skyUniforms[ 'mieCoefficient' ].value = 0.005;
-        skyUniforms[ 'mieDirectionalG' ].value = 0.8;
-
-        this.parameters = {
-          elevation: 15,
-          azimuth: 120
-        };
-
-        this.pmremGenerator = new THREE.PMREMGenerator( this.renderer );
+        this.addSky()
+        
 
         
 
