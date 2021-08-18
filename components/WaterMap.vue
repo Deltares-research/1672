@@ -11,7 +11,7 @@ import Stats from '../node_modules/three/examples/jsm/libs/stats.module.js';
 
 import { GUI } from '../node_modules/three/examples/jsm/libs/dat.gui.module.js';
 import { OrbitControls } from '../node_modules/three/examples/jsm/controls/OrbitControls.js';
-import { Water } from '../node_modules/three/examples/jsm/objects/Water.js';
+import { Water } from '../js/Water.js';
 import { Sky } from '../node_modules/three/examples/jsm/objects/Sky.js';
 
 export default {
