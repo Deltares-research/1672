@@ -5,7 +5,7 @@
     
     <!-- Navigation -->
     <b-navbar  toggleable="lg" type="dark" variant="dark" class="customnav">
-      <b-navbar-brand href="#"><img class="logo" src="Deltares_OP.svg" alt="Deltares Open Project"></b-navbar-brand>
+      <b-navbar-brand href="#"><img class="dplogo" src="Deltares_OP.svg" alt="Deltares Open Project"></b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="ml-auto">
@@ -37,7 +37,8 @@ html {overflow:  hidden}
   left: 0;
 }
 
-.logo{
+.dplogo{
+  width: calc(100% - 50px);
   max-width: 300px;
 }
 .content{
