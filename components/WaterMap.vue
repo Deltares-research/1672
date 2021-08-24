@@ -248,14 +248,14 @@ export default {
         //this.addSky()
         
         /* scene background */
-        var ambient = new THREE.AmbientLight(0xffffff, 0.0);
-        //scene.add(ambient);
+        var ambient = new THREE.AmbientLight(0xffffff, 0.1);
+        //this.scene.add(ambient);
 
         /* spotLight */
         var spotLight = new THREE.SpotLight( 0xffffff );
         //var spotLightHelper = new THREE.SpotLightHelper( spotLight );
         spotLight.position.set( 22, 1200, 35 );
-        spotLight.castShadow = true;
+        //spotLight.castShadow = true;
         spotLight.shadow.mapSize.width = 4000;
         spotLight.shadow.mapSize.height = 4000;
         spotLight.shadow.camera.near = 10;
@@ -264,7 +264,7 @@ export default {
         spotLight.intensity = 0.7;
         this.scene.add( spotLight);
 
-        var hemisphereLight = new THREE.HemisphereLight( 0x69696A, 0x69696A, 0 );
+        var hemisphereLight = new THREE.HemisphereLight( 0x69696A, 0x69696A, 0.8 );
         this.scene.add( hemisphereLight );
 
         var skyLoader = new THREE.TextureLoader();
