@@ -236,6 +236,12 @@ export default {
           var a = new THREE.Vector3(60, 0, 250 );
           this.camera.lookAt(a)
         }
+        else if (position==5){
+          this.camera.position.set(130, 70, 430 );  //447.49262,1336.4336
+          var a = new THREE.Vector3(60, 0, 280 );
+          this.camera.lookAt(a)
+        }
+
 
         //const axesHelper = new THREE.AxesHelper( 500 );
         //this.scene.add( axesHelper );
