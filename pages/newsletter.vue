@@ -17,15 +17,3 @@
   }
 
 </script>
-<style>
-.blogpost{
-  font-family: 'Georama', sans-serif;
-  font-size: 14px;
-  background:  rgba(255, 255, 255, 0.5);
-  backdrop-filter:  blur(4px);
-  border-radius:  10px;
-  max-width:  800px;
-  max-height:  70vh;
-}
-
-</style>

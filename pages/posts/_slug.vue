@@ -101,13 +101,6 @@ export default {
   border:  1px sold red;
 }
 
-.blogpost{
-  padding:  50px;
-  width: calc(100vw - 30px);
-  max-width:  800px;
-  height:  70vh;
-}
-
 .content{
   position: absolute;
   top:  40;

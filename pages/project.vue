@@ -67,7 +67,7 @@ export default{
     padding:  0px;
     font-family: 'Georama', sans-serif;
     font-size: 14px;
-    background:  rgba(255, 255, 255, 0.3);
+    background:  rgba(255, 255, 255, 0.75);
     backdrop-filter:  blur(4px);
     border-radius:  10px;
     max-width:  250px;
