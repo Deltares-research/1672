@@ -1,7 +1,7 @@
 <template> 
   <simplebar class="container-fluid content">
   <b-row class="justify-content-md-center justify-content-sm-center">
-    <b-col md="auto" sm="auto" class='postblurt' v-for="post in posts">
+    <b-col md="auto" sm="auto" class='postblurt blogpost' v-for="post in posts">
 
       <NuxtLink :to="'/posts/'+post.id">{{post.title}}</NuxtLink>
       <br>
@@ -15,7 +15,6 @@
 
 <script>
 import { request } from "../js/datocms";
-
 import simplebar from 'simplebar-vue';
 import 'simplebar/dist/simplebar.min.css';
 import { DateTime } from "luxon";
@@ -72,10 +71,6 @@ export default {
 
 .postblurt{
   font-family: 'Georama', sans-serif;
-  font-size: 14px;
-  background:  rgba(255, 255, 255, 0.3);
-  backdrop-filter:  blur(4px);
-  border-radius:  10px;
   padding:  30px;
   max-width:  500px;
   margin:  10px;

@@ -4,11 +4,12 @@
     <WaterMap class="bg"/>  
     
     <!-- Navigation -->
-    <b-navbar  toggleable="lg" type="light" variant="transparent">
+    <b-navbar  toggleable="lg" type="dark" variant="dark" class="customnav">
+      <b-navbar-brand href="#"><img class="logo" src="Deltares_OP.svg" alt="Deltares Open Project"></b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="ml-auto">
-        <b-nav-item to="/">Home</b-nav-item>
+        <b-nav-item active to="/">Home</b-nav-item>
         <b-nav-item to="/project">Project</b-nav-item>
         <b-nav-item to="/blog">Blog</b-nav-item>
         <b-nav-item to="/contact">Contact</b-nav-item>
@@ -36,6 +37,9 @@ html {overflow:  hidden}
   left: 0;
 }
 
+.logo{
+  max-width: 300px;
+}
 .content{
   position: relative;
   font-family: 'Georama', sans-serif;
@@ -56,7 +60,7 @@ html {overflow:  hidden}
 }
 
 .nuxt-link-exact-active{
-  border-bottom: 1px solid #556181;
+  border-bottom: 1px solid #4065C8;
 }
 
 .navbar-toggler {
@@ -86,13 +90,19 @@ a.nuxt-link-active {
 .blogpost{
   font-family: 'Georama', sans-serif;
   font-size: 14px;
-  background:  rgba(255, 255, 255, 0.9);
+  background:  rgba(255, 255, 255, 0.75);
   backdrop-filter:  blur(4px);
   border-radius:  10px;
   padding: 10px;
   width: 550px;
   max-width:  800px;
   max-height:  70vh;
+}
+
+.navbar {
+  background:  rgba(50, 50, 50, 0.5) !important;
+  backdrop-filter:  blur(4px) !important;
+  box-shadow: 5px 5px 10px;
 }
 
 </style>

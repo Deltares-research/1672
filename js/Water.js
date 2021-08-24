@@ -229,7 +229,7 @@ class Water extends Mesh {
 
 			rotationMatrix.extractRotation( scope.matrixWorld );
 
-			normal.set( 0, 0, 0 );
+			normal.set( 0, 1, 0 );
 			normal.applyMatrix4( rotationMatrix );
 
 			view.subVectors( mirrorWorldPosition, cameraWorldPosition );

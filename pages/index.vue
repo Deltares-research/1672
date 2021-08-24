@@ -3,23 +3,42 @@
     
     <div class="container-fluid content">
     <b-row class="logo_row">
-        <b-img center fluid class="logo" src="../static/Logo Deltatechnologie Oude Hollandse Waterlinie_zw.png"/>
+        <b-img center fluid class="logo" src="../static/Logo Deltatechnologie Oude Hollandse Waterlinie.png"/>
     </b-row>
     <b-row class="text-center pitch" align-v="center">
       <b-col><div class="mx-auto quote"><span v-html="pitch">{{ pitch }}</span></div></b-col>
     </b-row>
+    
   </div>
 </div>
 </template>
 
 <script>
 
+import { request } from "../js/datocms";
 
- 
+
 export default {
-  data: () => ({
-    pitch: ""
-  })
+  async asyncData({ params, redirect }) {
+      const HOMEPAGE_QUERY = `query MyQuery {
+  pitch {
+    pitch
+  }
+}
+`;
+      const data = await request({
+        query: HOMEPAGE_QUERY,
+        variables: {
+          limit: 10
+        }
+      })
+
+      if (data){
+      return {'pitch': data.pitch.pitch}
+      } else {
+      redirect("/")
+    }
+  },
 }
 </script>
 
@@ -34,7 +53,7 @@ export default {
 
 .pitch .quote{
     max-width:  1000px;
-    color: #0959D2;
+    color: #E0E0E0;
 }
 
 .logo{

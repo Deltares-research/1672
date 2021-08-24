@@ -66,22 +66,15 @@ export default {
           mesh.position.y=1
 
           if (mesh.name=="Water"){
-            
-
             this.loadWater(mesh);
-
-            //const material = new THREE.MeshStandardMaterial( { roughness: 0 } );
-            //let mesh2 = new THREE.Mesh( mesh.geometry, material );
-            //mesh2.position.x = 0
-            //mesh2.position.z = 0
-            //mesh2.position.y = 1
-            //this.scene.add( mesh2 );
-          } else if (mesh.name=="Map") {
+          } else if (mesh.name=="Masp") {
             //
           }else{
           //mesh.position.x += 5
           //mesh.position.z += -2
           //mesh.position.y += -1.0 
+          mesh.castShadow = false; 
+          mesh.receiveShadow = false; 
           this.scene.add(mesh);
           }
         });
@@ -109,8 +102,8 @@ export default {
 
           } ),
           sunDirection: new THREE.Vector3(),
-          sunColor: 0xffffff,
-          waterColor: 0x001e0f, // 0x131378,  // 0x001e0f 
+          sunColor: 0xF0420B, //0xffffff,
+          waterColor: 0x050520, //0x001e0f, // 0x131378,  // 0x001e0f 
           distortionScale: 2,
           fog: this.scene.fog !== undefined
         }
@@ -136,11 +129,12 @@ export default {
       const geometry = new THREE.PlaneGeometry(1061, 1404);
       const loader = new THREE.TextureLoader();
       const texture = loader.load( 'kom_map.png')
-      const material = new THREE.MeshBasicMaterial( { map: texture } );
-      //const material = new THREE.MeshBasicMaterial();
+      const material = new THREE.MeshStandardMaterial( { map: texture } );
+      //const material = new THREE.MeshPhongMaterial();
+
       
       this.mesh = new THREE.Mesh( geometry, material );
-      
+      this.mesh.receiveShadow = false;
       this.mesh.rotation.x =  - Math.PI / 2;
       this.mesh.rotation.z =  0//Math.PI ;
 
@@ -221,7 +215,7 @@ export default {
         // Add camera
         this.camera = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 1, 20000 );
         
-        let position = 1
+        let position = 4
         
 
         if (position==1){
@@ -229,11 +223,17 @@ export default {
           const a = new THREE.Vector3(70, 0, 200 );
           this.camera.lookAt(a)
         } else if (position == 2) {
-          this.camera.position.set(0, 50, -20 );  //447.49262,1336.4336
-          const a = new THREE.Vector3(0, 50, 50 );
+          this.camera.position.set(70, 40, 420 );  //447.49262,1336.4336
+          const a = new THREE.Vector3(70, 0, 100 );
+          this.camera.lookAt(a)
         } else if (position==3){
           this.camera.position.set(70, 106, 500 );  //447.49262,1336.4336
           var a = new THREE.Vector3(70, 0, 200 );
+          this.camera.lookAt(a)
+        }
+        else if (position==4){
+          this.camera.position.set(130, 90, 430 );  //447.49262,1336.4336
+          var a = new THREE.Vector3(60, 0, 250 );
           this.camera.lookAt(a)
         }
 
@@ -245,7 +245,40 @@ export default {
 
         
         // Skybox
-        this.addSky()
+        //this.addSky()
+        
+        /* scene background */
+        var ambient = new THREE.AmbientLight(0xffffff, 0.0);
+        //scene.add(ambient);
+
+        /* spotLight */
+        var spotLight = new THREE.SpotLight( 0xffffff );
+        //var spotLightHelper = new THREE.SpotLightHelper( spotLight );
+        spotLight.position.set( 22, 1200, 35 );
+        spotLight.castShadow = true;
+        spotLight.shadow.mapSize.width = 4000;
+        spotLight.shadow.mapSize.height = 4000;
+        spotLight.shadow.camera.near = 10;
+        spotLight.shadow.camera.far = 3000;
+        spotLight.shadow.camera.fov = 30;
+        spotLight.intensity = 0.7;
+        this.scene.add( spotLight);
+
+        var hemisphereLight = new THREE.HemisphereLight( 0x69696A, 0x69696A, 0 );
+        this.scene.add( hemisphereLight );
+
+        var skyLoader = new THREE.TextureLoader();
+        var skyBg
+        skyBg = skyLoader.load("https://i.ibb.co/8bzn2nX/sky-hdr-img.jpg");
+        skyBg.mapping = THREE.EquirectangularReflectionMapping;
+        skyBg.encoding = THREE.sRGBEncoding;
+        
+        //var skyLoader2 = new THREE.TextureLoader();
+        //skyBg2 = skyLoader2.load("https://i.ibb.co/KrFdvmf/sky-gradient.png");
+        //skyBg2.mapping = THREE.EquirectangularReflectionMapping;
+        //skyBg2.encoding = THREE.sRGBEncoding;
+
+        this.scene.background = skyBg;
         
 
         
@@ -263,7 +296,7 @@ export default {
         // GUI
         //this.addGUI()
 
-        this.updateSun()
+        //this.updateSun()
 
         window.addEventListener( 'resize', this.onWindowResize );
 
