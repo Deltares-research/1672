@@ -47,7 +47,7 @@ export default {
 .pitch{
   font-family: 'Georama', sans-serif;
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 200;
   margin:  20px;
 }
 

@@ -1,6 +1,6 @@
 <template>
 <div class="container-fluid content">
-  <b-row class="justify-content-md-center">
+  <b-row class="justify-content-sm-center">
     <b-col md="auto" sm="auto">
       
     <!--<div class="blogpost overflow-auto">-->

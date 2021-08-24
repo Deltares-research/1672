@@ -95,8 +95,9 @@ a.nuxt-link-active {
   border-radius:  10px;
   padding: 10px;
   width: 550px;
-  max-width:  800px;
+  max-width:  calc(100% - 20px);
   max-height:  70vh;
+  margin:  10px;
 }
 
 .navbar {

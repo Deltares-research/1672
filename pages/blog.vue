@@ -72,7 +72,7 @@ export default {
 .postblurt{
   font-family: 'Georama', sans-serif;
   padding:  30px;
-  max-width:  500px;
+  max-width:  90vw;
   margin:  10px;
   box-shadow: 2px 2px 5px;
   transition:  all 0.2s;
