@@ -1,6 +1,6 @@
 <template> 
   <simplebar class="container-fluid content">
-    <b-row class="justify-content-md-center">
+    <b-row class="justify-content-center">
       <b-col md="auto" class="projectcard" v-for="card in cards">
         <datocms-image class="post-image":data="card.image.responsiveImage" />
         <div class='text'><h4>{{ card.title }}</h4> {{ card.description }}</div>

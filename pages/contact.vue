@@ -1,6 +1,6 @@
 <template> 
   <div class="container-fluid content">
-    <b-row class="justify-content-sm-center">
+    <b-row class="justify-content-center">
     <simplebar class="blogpost">
       <b>1672: De Deltatechnologie achter de Oude Hollandse Waterlinie</b> is een Open Project geleid door kennisinstituut Deltares in samenwerking met o.a. Witteveen+Bos, HKV Lijn in Water, Rijksdienst voor Cultureel Erfgoed, stichting Oude Hollandse Waterlinie, Probos, Technische Universiteit Delft, Universiteit Utrecht en Waterschap Rivierenland. 
       <br/>

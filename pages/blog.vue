@@ -1,6 +1,6 @@
 <template> 
   <simplebar class="container-fluid content">
-  <b-row class="justify-content-md-center justify-content-sm-center">
+  <b-row class="justify-content-center">
     <b-col md="auto" sm="auto" class='postblurt blogpost' v-for="post in posts">
 
       <NuxtLink :to="'/posts/'+post.id">{{post.title}}</NuxtLink>
