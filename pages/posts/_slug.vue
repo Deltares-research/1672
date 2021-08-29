@@ -1,23 +1,32 @@
 <template>
 <div class="container-fluid content">
-  <b-row class="justify-content-sm-center">
-    <b-col md="auto" sm="auto">
+    <b-row class="justify-content-sm-center">
       
-    <!--<div class="blogpost overflow-auto">-->
-      <simplebar class="blogpost" data-simplebar-auto-hide="true">
-        <NuxtLink to="/blog"><b-icon-arrow-left></b-icon-arrow-left> Terug</NuxtLink>
-        <h1>{{ title }} </h1>
-        by: <a>{{ author }}</a> - {{date | formatDate}}<br/>
-        <hr>
-        <!--<datocms-image class="post-image":data="image" />-->
-        <datocms-structured-text
-            :data="body"/>
-
-      </simplebar>
-    <!--</div>-->
-  
-  </b-col>
+      <b-col md="auto" sm="auto"  >
+        <simplebar class="blogpost" data-simplebar-auto-hide="true">
+        <b-row class="justify-content-sm-center">
+        
+            <b-col md="auto" sm="auto"  class="blogimage">
+              <div class="post-image">
+              <datocms-image :data="image" />
+            </div>
+            </b-col>
+      <b-col>
+          <NuxtLink to="/blog"><b-icon-arrow-left></b-icon-arrow-left> Terug</NuxtLink>
+          <h1>{{ title }} </h1>
+          <span class='info'>
+          by: <a>{{ author }}</a> - {{date | formatDate}}</span><br/>
+          <hr>
+          <!--<datocms-image class="post-image":data="image" />-->
+          <datocms-structured-text
+              :data="body"/>
+      <!--</div>-->
+    </b-col>
   </b-row>
+</simplebar>
+
+    </b-col>
+    </b-row>
 </div>
 </template>
 
@@ -35,13 +44,13 @@ import 'simplebar/dist/simplebar.min.css';
 export default {  
   async asyncData({ params, redirect }) {
       const HOMEPAGE_QUERY = `query 
-      {article(filter: {id: {eq: ` +params.slug +`}}) 
+      {article(filter: {id: {eq: ` + params.slug +`}}) 
       { title 
         author 
         _createdAt 
         body  { value } 
         image { 
-          responsiveImage(imgixParams: { fit: crop, w: 300, h: 300, auto: format }) {
+          responsiveImage(imgixParams: { fit: crop, w: 200, h: 400, auto: format }) {
           alt
           base64
           bgColor
@@ -99,6 +108,9 @@ export default {
   width: 50;
   height: 50;
   border:  1px sold red;
+  position: sticky;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .content{

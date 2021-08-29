@@ -202,7 +202,7 @@ export default {
     addLights: function() {
 
         // Ambient light illuminates all objects equally
-        var ambientLight = new THREE.AmbientLight(0xD3E8E9, 0.2);
+        var ambientLight = new THREE.AmbientLight(0xD3E8E9, 0.4);
         this.scene.add(ambientLight);
 
         // SpotLight casts shadows

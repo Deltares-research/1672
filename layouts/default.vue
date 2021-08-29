@@ -94,17 +94,49 @@ a.nuxt-link-active {
   background:  rgba(255, 255, 255, 0.75);
   backdrop-filter:  blur(4px);
   border-radius:  10px;
-  padding: 10px;
-  width: 550px;
+  padding: 40px;
+  width: 800px;
   max-width:  calc(100% - 20px);
   max-height:  70vh;
   margin:  10px;
+}
+
+.blogpost h1{
+  font-family: 'Georama', sans-serif;
+  font-size: 24px;
+  font-weight: 500px;
+}
+
+
+.blogpost .info{
+  font-family: 'Georama', sans-serif;
+  font-size: 12px;
+  font-weight: 100px;
 }
 
 .navbar {
   background:  rgba(50, 50, 50, 0.5) !important;
   backdrop-filter:  blur(4px) !important;
   box-shadow: 5px 5px 10px;
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
 }
 
 </style>
