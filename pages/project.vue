@@ -1,5 +1,5 @@
 <template> 
-  <simplebar class="container-fluid content">
+  <simplebar class="container-fluid content t">
     <b-row class="justify-content-center">
       <b-col md="auto" class="projectcard" v-for="card in cards">
         <datocms-image class="post-image":data="card.image.responsiveImage" />
@@ -63,6 +63,11 @@ export default{
     width:  100%;
   }  
 
+ .t{
+  height: calc(100vh - 100px);
+}
+
+
   .projectcard{
     padding:  0px;
     font-family: 'Georama', sans-serif;
@@ -71,7 +76,7 @@ export default{
     backdrop-filter:  blur(4px);
     border-radius:  10px;
     max-width:  250px;
-    margin:  5px;
+    margin:  15px;
     box-shadow: 2px 2px 5px;
     overflow:  hidden;
   
