@@ -141,4 +141,7 @@ blockquote p {
   display: inline;
 }
 
+strong {
+  font-weight: 900; 
+}
 </style>
