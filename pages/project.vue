@@ -1,7 +1,9 @@
 <template> 
   <simplebar class="container-fluid content t">
     <b-row class="justify-content-center">
-      <div class="blogpost"><p v-html="projectDescription"></p></div>
+      <simplebar class="blogpost a">
+          <p v-html="projectDescription"></p>
+      </simplebar>
     </b-row>
     <b-row class="justify-content-center">
       <b-col md="auto" class="projectcard" v-for="card in cards">
