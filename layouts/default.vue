@@ -38,14 +38,16 @@ html {overflow:  hidden}
 }
 
 .dplogo{
-  width: calc(100% - 50px);
+  width: 50vw;
   max-width: 300px;
 }
+
 .content{
   position: relative;
   font-family: 'Georama', sans-serif;
   font-weight: 300;
   margin-top:  10px;
+
 }
 
 .nav-collapse{
