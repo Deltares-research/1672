@@ -45,6 +45,7 @@ Types of dikes and how to recognize them:
 
 1. River dikes: can be found next to rivers. Are usually > 5 m high. Defend against flooding
 2. Embankment: small-scale feature < 1 m high. 
+3. whatever dike
 
 
 #### Waterways
