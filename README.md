@@ -12,26 +12,30 @@ Preparation (internal):
   
   - Participants should be divided into teams (how many should be in one team? around 5?)
   - Create a simple sign up sheet, where participants can choose their own teams
+  
   Tasks
+  
   - Decide on what tasks the participants should execute
 
 Preparation (external):
 
   Send participants an email with some preparatory tasks:
   
-    - Sign-up sheet for teams
-    - GIS tutorial
+  - Sign-up sheet for teams
+  - GIS tutorial
     
 Execution:
-  Explain the goal of the mapathon
-  Introduce participants to the set-up (i.e. SpatialChat)
-  Give a short GIS tutorial
-  Assign participants to tasks
+
+  - Explain the goal of the mapathon
+  - Introduce participants to the set-up (i.e. SpatialChat)
+  - Give a short GIS tutorial
+  - Assign participants to tasks
  
  Wrap-Up
-  Ask for feedback
-  Show what has been achieved
-  Explain what the next steps would be and how they could be involved further if the wanted to be
+ 
+  - Ask for feedback
+  - Show what has been achieved
+  - Explain what the next steps would be and how they could be involved further if the wanted to be
 
 ### Tutorial
 
