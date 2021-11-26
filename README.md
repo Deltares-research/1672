@@ -6,7 +6,7 @@ Inventory of required steps for users to participate in mapathons.
 
 ### How to Mapathon
 
-Preparation (internal):
+#### Preparation (internal):
 
   Teams
   
