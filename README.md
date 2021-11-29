@@ -45,10 +45,17 @@ To the point steps for users to get up to speed with the necessities of using th
 We use QGIS to
 2. Download the [Project 1672](https//link_to_stuff) project file and double click *.map* file
 3. Zoom to tutorial area (you signed up to a specific area, e.g. 1ste Kom)
-4. Decide who is picking up which hydrologic feature (there are eight!), for each of these attributes you are able to
+4. Decide who is picking up which hydrologic feature (there are eight!), for each of these attributes you are able to:
 - edit features
 - add features
 - alter attribute values
+5. Add alternative historic maps, for instance from https://www.oldmapsonline.org/, workflow:
+- find a place
+- in the right pane you find what's there
+- choose map close to 1672
+- for Dutch maps, you will be most likely reverted to https://uu.georeferencer.com/ (create a login to use as WMS)
+- click on the mapname in upper right part the screen (in the part where you also find tools for opacity, editing and settings), when logged in, you find WMTS links.
+- enable link with the WMS/WMTS icon in QGIS
 
 ### Tasks
 
