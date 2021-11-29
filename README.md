@@ -46,9 +46,9 @@ We use QGIS to
 2. Download the [Project 1672](https//link_to_stuff) project file and double click *.map* file
 3. Zoom to tutorial area (you signed up to a specific area, e.g. 1ste Kom)
 4. Decide who is picking up which hydrologic feature (there are eight!), for each of these attributes you are able to
-* edit features
-* add features
-* alter attribute values
+  1. edit features
+  2. add features
+  3. alter attribute values
 
 ### Tasks
 
