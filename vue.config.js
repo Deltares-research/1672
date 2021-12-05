@@ -1,4 +1,4 @@
 module.exports = {
    runtimeCompiler: true,
-   publicPath: '/facq/'
+   publicPath: '/1672/'
 }
