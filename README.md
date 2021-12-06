@@ -80,7 +80,7 @@ These elements come in a few basic forms. Learn to recognize them on a map. Each
 - Name (feature name)
 - Source (wikipedia link, or other source material)
 - ~~Year (if known, approximate year it was )~~
-- Discussion (link to github issue to discuss an element? E.g. discussion on whether the dike existed in 1672)
+- ~~Discussion (link to github issue to discuss an element? E.g. discussion on whether the dike existed in 1672)~~
 - Status (e.g. 0-claim, 1-under discussion, 2-closed)
 
 #### Dikes
