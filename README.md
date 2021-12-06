@@ -103,3 +103,4 @@ Types of waterways and how to recognize them:
 
 1. Sluice (sluis, inlaatwerk): part of a dike
 2. Dam (dam): located in a waterway
+3. Pumps: e.g. windmills used to drain the land
