@@ -8,7 +8,6 @@
                  src="./assets/Deltares_OP.svg" 
                  alt="Deltares Open Project">
         </b-navbar-brand>
-        
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
             <b-nav-item class="active"
@@ -39,14 +38,12 @@
             <div class="homeContent">
             <h1>Bouw mee aan het Nederland van 1672</h1> 
             <p>In 2022 is het 350 jaar geleden dat de Oude Hollandse Waterlinie werd ingezet. Wij reconstrueren die inzet met onze overstromingsmodellen. En jij kan ons hierbij helpen.</p> 
-
             <p>Stap in de schoenen van een waterbouwkundig ingenieur en help ons de 17e eeuw tot leven te brengen.</p>
             </div>    
         </div>
         <Slide v-for="(slide, index) in slides" v-bind:key="index" :data="slide"/>
     </full-page>
-
-<div class="payoff"><img src="./assets/Deltares_pay-off.svg"/></div>
+    <div class="payoff"><img src="./assets/Deltares_pay-off.svg"/></div>
 </div>
 
 </template>
@@ -175,9 +172,11 @@ export default {
 </script>
 
 <style>
+
 @import 'https://unpkg.com/fullpage.js/dist/fullpage.min.css';
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100&display=swap');
 @import url('https://js.arcgis.com/3.23/esri/css/esri.css');
+
 
 @CHARSET "ISO-8859-1";
 /* Reset CSS
@@ -212,7 +211,7 @@ caption,th {
     text-align: left;
 
 }
-h1,h2,h3,h4,h5,h6 {
+h1,h2,h3,h4,h5,h6,p {
     font-family: "Outfit", sans-serif;
     font-weight: normal;
     font-size: 100%;
@@ -230,32 +229,32 @@ abbr,acronym { border: 0;
     box-sizing: border-box;
 }
 
-/* Custom
+/* Font sizes
  * --------------------------------------- */
 body {
     font-family: arial, helvetica;
 }
 
 h1{
-    font-size: 5em;
+    font-size: 3em;
     text-align: center;
     color: #fff;
     font-weight: bold;
 }
 h2{
-    font-size: 4.5em;
+    font-size: 2.8em;
     text-align: center;
     color: #fff;
     font-weight: bold;
 }
 h3{
-    font-size: 4em;
+    font-size: 2.5em;
     text-align: center;
     color: #fff;
     font-weight: bold;
 }
 h4{
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 100;
     color: #fff;
     font-weight: bold;
