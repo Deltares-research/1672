@@ -94,9 +94,9 @@ Types of dikes and how to recognize them:
 
 Types of waterways and how to recognize them:
 
-1. Canals (kanaal, wetering, etc.): man-made. Used for shipping by (small) boats.
+1. Rivers (rivieren, beken): natural. usually not straight
 2. Ditches (sloten): man-made. used for water managament for agriculture
-3. Rivers (rivieren, beken): natural. usually not straight
+3. Canals (kanaal, wetering, etc.): man-made. Used for shipping by (small) boats.
 
 
 #### Structures
