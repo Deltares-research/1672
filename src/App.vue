@@ -102,7 +102,7 @@ export default {
                 slidesNavigation:false,
                 slidesNavPosition: 'bottom',
                 //other
-                scrolloverflow: true,
+                scrollOverflow: true,
                 afterLoad: this.afterLoad,
                 navigation: true,
                 navigationTooltips: ["Home"],
@@ -342,6 +342,7 @@ p{
   text-align: center;
   display: block;
   margin: auto;
+  margin-bottom: 20px;
   padding-top: 60px;
   top:  4em;
 }
@@ -353,12 +354,11 @@ p{
 
 .slideContent{
   position: relative;
-  padding:  0px;
+  padding:  5px;
   background-color: #FFFFFF00;
   font-family:  "Outfit", sans-serif;
   color: #fff;
   text-align: left;
-  
 }
 
 .slideContent .slideImage{
@@ -375,6 +375,14 @@ p{
 }
 
 .slideContent .slideText h1{
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.3em;
+    text-align: left;
+}
+
+.slideContent .slideText h2{
     font-size: 1em;
     font-weight: 100;
     color: #fff;
@@ -500,7 +508,7 @@ footer{
   position: absolute;
   right: 20px;
   bottom: 10px;
-  width:  250px;
+  width:  20vw;
 }
 
 /* Actions buttons

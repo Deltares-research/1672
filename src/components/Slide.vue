@@ -1,10 +1,11 @@
 <template>
   <section class="section">
+    
+  <div class="slide" v-for="(page, index) in data.page" v-bind:key="index" :data-anchor="index">
     <div class="slideHeader">
      <h3>{{ data.title }}</h3>
      <h4>{{ data.subtitle }}</h4>
-  </div>
-  <div class="slide" v-for="(page, index) in data.page" v-bind:key="index">
+    </div>
     <b-container class="slideContent">
     <b-row class="text-center">
       <b-col md="4" xs="6">
