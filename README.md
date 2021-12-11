@@ -77,9 +77,10 @@ The basic elements of a hydraulic model are
 These elements come in a few basic forms. Learn to recognize them on a map. Each element requires at least the following information:
 
 - Type (see below)
+- Name (feature name)
 - Source (wikipedia link, or other source material)
-- Year (if known, approximate year it was )
-- Discussion (link to github issue to discuss an element? E.g. discussion on whether the dike existed in 1672)
+- ~~Year (if known, approximate year it was )~~
+- ~~Discussion (link to github issue to discuss an element? E.g. discussion on whether the dike existed in 1672)~~
 - Status (e.g. 0-claim, 1-under discussion, 2-closed)
 
 #### Dikes
@@ -94,12 +95,13 @@ Types of dikes and how to recognize them:
 
 Types of waterways and how to recognize them:
 
-1. Canals (kanaal, wetering, etc.): man-made. Used for shipping by (small) boats.
+1. Rivers (rivieren, beken): natural. usually not straight
 2. Ditches (sloten): man-made. used for water managament for agriculture
-3. Rivers (rivieren, beken): natural. usually not straight
+3. Canals (kanaal, wetering, etc.): man-made. Used for shipping by (small) boats.
 
 
 #### Structures
 
 1. Sluice (sluis, inlaatwerk): part of a dike
 2. Dam (dam): located in a waterway
+3. Pumps: e.g. windmills used to drain the land
