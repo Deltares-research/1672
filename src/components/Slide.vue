@@ -3,8 +3,8 @@
     
   <div class="slide" v-for="(page, index) in data.page" v-bind:key="index" :data-anchor="index">
     <div class="slideHeader">
-     <h3>{{ data.title }}</h3>
-     <h4>{{ data.subtitle }}</h4>
+     <h3>{{ data.title }} {{ indexCounter(index) }}  </h3>
+     <h4>{{ page.title }}</h4>
     </div>
     <b-container class="slideContent">
     <b-row class="text-center">
@@ -35,6 +35,11 @@ export default {
   },
   mounted(){
     console.log(this.data)
+  },
+  methods: {
+    indexCounter(index){
+      return "("+(index+1)+"/"+this.data.page.length+")"
+    }
   }
 }
 </script>
