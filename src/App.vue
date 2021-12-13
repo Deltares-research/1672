@@ -15,7 +15,7 @@
                         href="#page1">Home</b-nav-item>
             <b-nav-item 
                         data-menuanchor="page2"
-                        href="#page2">Map</b-nav-item>
+                        href="#page2">Kaart</b-nav-item>
             <b-nav-item v-for="(slide, index) in slides"
                         v-bind:key="index"
                         :href="'#'+returnAnchor(index)"
