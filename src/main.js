@@ -5,6 +5,7 @@ import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'fullpage.js/vendors/scrolloverflow.min.js' // Optional. When using scrollOverflow:true
 import VueFullPage from 'vue-fullpage.js'
+import 'leaflet/dist/leaflet.css';
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)

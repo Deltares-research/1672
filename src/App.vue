@@ -13,6 +13,9 @@
             <b-nav-item class="active"
                         data-menuanchor="page1"
                         href="#page1">Home</b-nav-item>
+            <b-nav-item 
+                        data-menuanchor="page2"
+                        href="#page2">Map</b-nav-item>
             <b-nav-item v-for="(slide, index) in slides"
                         v-bind:key="index"
                         :href="'#'+returnAnchor(index)"
@@ -41,6 +44,7 @@
             <p>Stap in de schoenen van een waterbouwkundig ingenieur en help ons de 17e eeuw tot leven te brengen.</p>
             </div>    
         </div>
+        <Map/>
         <Slide v-for="(slide, index) in slides" v-bind:key="index" :data="slide"/>
     </full-page>
     <div class="payoff"><img src="./assets/Deltares_pay-off.svg"/></div>
@@ -50,10 +54,10 @@
 
 
 <script>
-  /* eslint-disable */
-import { loadModules } from 'esri-loader';
+
 import { request } from "./js/datocms";
 import Slide from "./components/Slide"
+import Map from "./components/Map"
 
     const query = `query MyQuery {
       allSlides(locale: nl) {
@@ -86,7 +90,7 @@ import Slide from "./components/Slide"
 `
 
 export default {
-    components: {Slide},
+    components: {Slide,Map},
     data: function(){
         return {
             currentSlide: 0,
@@ -105,7 +109,7 @@ export default {
                 scrollOverflow: true,
                 afterLoad: this.afterLoad,
                 navigation: true,
-                navigationTooltips: ["Home"],
+                navigationTooltips: ["Home", "Map"],
                 anchors: ['page1', 'page2', 'page3', 'page4', 'page5'],
                 sectionsColor: ['#080c80', '#0d38e0', '#00b389', '#00cc96', '#1bcee6', '#ee1a59', '#2c3e4f', '#ba5be9', '#b4b8ab']
             },
@@ -127,7 +131,7 @@ export default {
   }},
   methods: {
         returnAnchor(index){
-            let n = index+2
+            let n = index+3
             return "page"+n
         },
         afterLoad: function(origin, destination){
@@ -136,38 +140,7 @@ export default {
         },
         reloadSlides() {
             this.$refs.fullpage.build();
-        },
-        loadMap() {
-        loadModules(['esri/config','esri/Map', 'esri/views/MapView', 'esri/layers/WFSLayer'], {
-            css: true
-          })
-          .then(([esriConfig, ArcGISMap, MapView, WFSLayer]) => {
-            // key?
-            esriConfig.apiKey = "AAPK8d07a64fb5b74dffa00df7f61dbedb60GMfe4SX6N9lZEswAOBDYHAGfQm4NbHRWLvvhiwJOXEzZgAr2rwxtFqEXxR2B0tok";
-            // create map with the given options
-            const map = new ArcGISMap({
-              basemap: 'topo-vector'
-            });
-
-           
-            // assign map to this view
-            this.view = new MapView({
-              container: "viewDiv",
-              map: map,
-              center: [4.976, 51.837],
-              zoom: 9
-            });
-            
-             // wfs layer
-            const layer = new WFSLayer({
-              url: "https://waterlinie1672.openearth.nl/geoserver/ows", // url to your WFS endpoint
-              name: "hydrology:waterway" // name of the FeatureType
-            });
-            map.add(layer); // add the layer to the map
-
-          });
-        }
-
+        } 
 }}
 </script>
 
