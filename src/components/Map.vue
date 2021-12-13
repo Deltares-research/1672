@@ -174,6 +174,10 @@ export default {
   display: block;
   margin: auto;
   top:  4em;
+  border-radius: 50px;
+  background: linear-gradient(225deg, #253ebc, #2c4ae0);
+  box-shadow:  -20px 20px 60px #233bb2,
+               20px -20px 60px #2f4ff0;
   }
 
 l-map{
