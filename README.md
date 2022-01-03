@@ -53,9 +53,11 @@ We use QGIS to
 - find a place
 - in the right pane you find what's there
 - choose map close to 1672
-- for Dutch maps, you will be most likely reverted to https://uu.georeferencer.com/ (create a login to use as WMS)
+- for Dutch maps, you will be most likely reverted to https://uu.georeferencer.com/ (create a login to use as WMS, only if you want to add other layers than the 15+ provided)
 - click on the mapname in upper right part the screen (in the part where you also find tools for opacity, editing and settings), when logged in, you find WMTS links.
 - enable link with the WMS/WMTS icon in QGIS
+
+For more (illustrated tips and trics, see [tips&trics](QGIS_TipsAndTrics.md))
 
 ### Tasks
 
@@ -77,7 +79,7 @@ The basic elements of a hydraulic model are
 These elements come in a few basic forms. Learn to recognize them on a map. Each element requires at least the following information:
 
 - Type (see below)
-- Name (feature name)
+- Naam (feature name)
 - Source (wikipedia link, or other source material)
 - ~~Year (if known, approximate year it was )~~
 - ~~Discussion (link to github issue to discuss an element? E.g. discussion on whether the dike existed in 1672)~~
