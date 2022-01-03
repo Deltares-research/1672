@@ -21,8 +21,8 @@ Inventory of required steps for users to participate in mapathons.
 
   - Sign-up sheet for teams
   - Download QGIS (preferably 3.22)
+  - read the QGIS Tips and Tricks document (see [tips&trics](QGIS_TipsAndTrics.md)))
   - GIS tutorial (https://training.datapolitan.com/qgis-training/Introduction_to_GIS_Fundamentals/#1)
-
 
 #### Execution:
 
