@@ -183,7 +183,9 @@ export default {
 l-map{
   height: 100%;
 }
-
+.section{
+  padding-top: 50px;
+}
 .leaflet-tile { border: solid black 5px; }
 </style>
 

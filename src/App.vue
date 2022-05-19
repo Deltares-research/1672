@@ -304,10 +304,11 @@ p{
 }
 
 .homeContent{
+    position: relative;
     width: 100vw;
     padding-left: 50px;
     padding-right: 50px;
-    padding-top: 0px;
+    padding-top: 40px;
 }
 
 .slideHeader{
@@ -371,8 +372,9 @@ p{
 }
 
 .fp-controlArrow.fp-prev {
-  left:  20px;
+  left:  30px;
   top: 8em;
+  border-style:  solid;
   border-width: 0px 3px 3px 0px;
   border-color: white;
   padding:  10px;
@@ -382,8 +384,9 @@ p{
 }
 
 .fp-controlArrow.fp-next {
-  right:  20px;
+  right:  30px;
   top: 8em;
+  border-style: solid;
   border-width: 0px 3px 3px 0px;
   border-color: white;
   padding:  10px;
